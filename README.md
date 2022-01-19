@@ -1,4 +1,4 @@
 # sisteminha-eleicoes-ArvoreBinariaBusca
- Trabalho final da matéria de Algoritmos e Estruturas de Dados. Um sistema de eleições elaborado utilizando de uma árvore binária de busca na liguagem C.
- O algoritmo de liberação (funções "libera") dos ponteiros (árvore, lista e infos) está incorreto.
- Além da estrutura de árvore, também foi utilizada uma estrutura de lista.
+ O trabalho consiste na implementação de um sistema de votação. Um grupo de pessoas vai participar de uma eleição, tal qual cada eleitor/candidato a vaga deve possuir um titulo de eleitor (numérico) válido. Qualquer eleitor com tal titulo pode se candidatar. O programa deve possibiltar que a qualquer momento uma pessoa possa votar ou retirar seu voto e permitir também apenas um voto por pessoa. O programa trabalha com duas árvores binárias de busca para guardar as informações, bem como uma estrutura de Lista para guardar informações dos cadidatos inscritos. O programa permite o cadastro de quantas pessoas necessárias, porém para iniciar uma votação deve haver pelo menos um candidato inscrito. Qualquer um cadastrado no Sistema pode se inscrever para candidato. Caso aconteça a inscrição de uma pessoa que não está cadastrada no Sistema, possuindo um titulo válido, esta é automaticamente inserida.
+
+ O sistema espera como entrada o nome e um titulo de eleitor (inteiro) para cada nova pessoa cadastrada.
