@@ -1,0 +1,29 @@
+#ifndef ARVOREBINBUSCA_H_INCLUDED
+#define ARVOREBINBUSCA_H_INCLUDED
+
+typedef struct {
+    int titulo_eleitor;
+    char Nome[50];
+    int voto;
+}Info;
+
+typedef struct No_Est{
+    Info *info;
+    struct No_Est *pEsq, *pDir;
+}No;
+
+No *arvoreTitulos;
+No *arvoreVotos;
+
+void CadastraTitulo(No**);
+//void preco(No*, int);
+//int remover(No**);
+int pesquisa (No*, Info**);
+No* cria_no (Info*);
+int insere (No**, Info*);
+//int retira (TRegistro, No**);
+//void sucessor (No*, No**);
+void central (No*);
+
+
+#endif // ARVOREBINBUSCA_H_INCLUDED

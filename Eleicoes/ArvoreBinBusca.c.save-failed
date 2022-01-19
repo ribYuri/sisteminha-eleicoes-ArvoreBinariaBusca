@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "ArvoreBinBusca.h"
+
+void CadastraTitulo(No** ppRaiz){
+    Info registro;
+    printf("Insira o titulo do eleitor: ");
+    scanf("%d", &registro.titulo_eleitor);
+    printf("Insira o nome do eleitor: ");
+    scanf("\n%[\^n]s", &registro.Nome);
+    insere(ppRaiz, registro);
+}
+/*
+void preco(No* ppRaiz, int codigo){
+    TRegistro aux;
+    aux.chave = codigo;
+    aux.preco = 0;
+    if(pesquisa(ppRaiz, &aux)){
+        printf("O PRODUTO %d CUSTA R$%.2f\n", aux.chave, aux.preco);
+    } else {
+        printf("PRODUTO %d NAO ENCONTRADO\n", codigo);
+    }
+}
+
+int remover(No** ppRaiz){
+    Info reg;
+    printf("Insira um codigo para remocao: ");
+    scanf("%d", &reg.chave);
+    if (retira(reg, ppRaiz)){
+        printf("O PRODUTO %d FOI REMOVIDO COM SUCESSO.\n", reg.chave);
+        return 1;
+    } else {
+        printf("PRODUTO %d NAO ENCONTRADO\n", reg.chave);
+    }
+    return 0;
+}
+
+int pesquisa (No* pRaiz, Info *pX) {
+    if (pRaiz == NULL)
+        return 0;
+    if (pX->chave < pRaiz->reg.chave)
+        return pesquisa (pRaiz->pEsq, pX);
+    if (pX->chave > pRaiz->reg.chave)
+        return pesquisa (pRaiz->pDir, pX);
+    if (pX->chave == pRaiz->reg.chave)
+        *pX = pRaiz->reg;
+    return 1;
+}
+*/
+No* cria_no (Info x) {
+    No* novo_no;
+    novo_no = (No*)malloc(sizeof(No));
+    novo_no->info = x;
+    novo_no->pEsq = NULL;
+    novo_no->pDir = NULL;
+    return (novo_no);
+}
+
+int insere (No** ppRaiz, Info x) {
+    if (*ppRaiz == NULL) {
+        *ppRaiz = cria_no(x);
+        return 1;
+    }
+    if (x.titulo_eleitor < (*ppRaiz)->info.titulo_eleitor)
+        return insere (&((*ppRaiz)->pEsq), x);
+    if (x.titulo_eleitor > (*ppRaiz)->info.titulo_eleitor)
+        return insere (&((*ppRaiz)->pDir), x);
+    return 0;
+}
+/*
+int retira (info x, No** p) {
+    No* pAux;
+    if (*p == NULL)
+        return 0;
+    if (x.chave < (*p)->reg.chave)
+        return retira (x, &(*p)->pEsq);
+    if (x.chave > (*p)->reg.chave)
+        return retira (x, &(*p)->pDir);
+
+    if (x.chave == (*p)->reg.chave){
+        if ((*p)->pDir == NULL) {
+            pAux = *p;
+            *p = (*p)->pEsq;
+            free (pAux);
+            return 1;
+        }
+        if ((*p)->pEsq == NULL) {
+            pAux = *p;
+            *p = (*p)->pDir;
+            free (pAux);
+            return 1;
+        }
+    }
+    sucessor (*p, &(*p)->pDir);
+    return 1;
+}
+
+void sucessor (No* q, No** r) {
+    No* pAux;
+    if ((*r)->pEsq != NULL) {
+        sucessor (q, &(*r)->pEsq);
+        return;
+    }
+    q->reg = (*r)->reg;
+    pAux = *r;
+    *r = (*r)->pDir;
+    free (pAux);
+}
+*/
+void central (No* pRaiz) {
+    if (pRaiz != NULL) {
+        central (pRaiz->pEsq);
+        printf ("Titulo de eleitor: %d  ||  Nome: %s\n", pRaiz->info.titulo_eleitor, pRaiz->info.Nome);
+        central (pRaiz->pDir);
+    }
+}
